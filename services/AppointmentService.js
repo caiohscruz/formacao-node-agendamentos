@@ -5,14 +5,14 @@ const Appo = mongoose.model("Appointment", appointment);
 const AppointmentFactory = require("../factories/AppointmentFactory");
 
 class AppointmentService {
-  async Create(name, email, description, cpf, date, time) {
+  async Create(obj) {
     var newAppo = new Appo({
-      name,
-      email,
-      cpf,
-      description,
-      date,
-      time,
+      name: obj.name,
+      email: obj.email,
+      cpf: obj.cpf,
+      description: obj.description,
+      date: obj.date,
+      time: obj.time,
       finished: false,
     });
     try {

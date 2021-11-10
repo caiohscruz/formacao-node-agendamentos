@@ -19,18 +19,19 @@ app.get('/', (req, res) =>{
     res.render("index")
 })
 
-app.get('/register', (req, res) =>{
+app.get('/agendamento', (req, res) =>{
     res.render('create')
 })
 
 app.post('/create', async (req, res) =>{
-    var result = await AppointmentService.Create(
-        req.body.name,
-        req.body.email,
-        req.body.cpf,
-        req.body.description,
-        req.body.date,
-        req.body.time,
+    var result = await AppointmentService.Create({
+        name: req.body.name,
+        email: req.body.email,
+        cpf: req.body.cpf,
+        description: req.body.description,
+        date: req.body.date,
+        time: req.body.time,
+    }
     )
     if(result.status==true){
         res.redirect("/")
