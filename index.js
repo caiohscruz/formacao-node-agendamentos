@@ -19,7 +19,7 @@ app.get('/', (req, res) =>{
     res.render("index")
 })
 
-app.get('/cadastro', (req, res) =>{
+app.get('/register', (req, res) =>{
     res.render('create')
 })
 
@@ -37,6 +37,11 @@ app.post('/create', async (req, res) =>{
     }else{
         res.send(result.msg)
     }
+})
+
+app.get('/getcalendar', async (req,res) => {
+    var result = await AppointmentService.GetAll(false)
+    res.json(result)
 })
 
 app.listen(8080, () => {console.log("Rodando")})
