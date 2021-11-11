@@ -63,6 +63,7 @@ class AppointmentService {
       }
     }
   }
+
   async Finish(id){
     try{
       await Appo.findByIdAndUpdate(id, {finished: true})
@@ -76,6 +77,22 @@ class AppointmentService {
         msg: err
       }
     }
+  }
+
+  async Search(query){
+  try{
+    var result = await Appo.find().or([{email: query}, {cpf: query}])
+    return {
+      status: true,
+      appos: result
+    }
+  } catch(err){
+    console.log(err)
+    return {
+      status:false,
+      msg: err
+    }
+  }   
   }
 
 }

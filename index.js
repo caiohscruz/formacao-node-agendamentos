@@ -81,6 +81,19 @@ app.get("/list", async (req, res) => {
     res.render("list", {result})
 })
 
+app.get("/searchresult", async (req, res) => {
+    var result = await AppointmentService.Search(req.query.search)
+    if(result.status==true){
+        res.status(200)
+        res.render("list", {result: result.appos})
+
+    }else{  
+        res.status(500)
+        res.json({msg: result.msg})
+    }
+})
+
+
 app.listen(8080, () => {
   console.log("Rodando");
 });
