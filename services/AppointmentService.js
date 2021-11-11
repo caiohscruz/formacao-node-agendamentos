@@ -32,17 +32,18 @@ class AppointmentService {
   async GetAll(showFinished) {
     if (showFinished == true) {
       var appos = await Appo.find();
+      return appos;
     } else {
       var appos = await Appo.find({ finished: false });
+      var appointments = [];
+  
+      appos.forEach((appointment) => {
+        if (appointment.date != null)
+          appointments.push(AppointmentFactory.Build(appointment));
+      });
+  
+      return appointments;
     }
-    var appointments = [];
-
-    appos.forEach((appointment) => {
-      if (appointment.date != null)
-        appointments.push(AppointmentFactory.Build(appointment));
-    });
-
-    return appointments;
   }
 
   async GetById(id){

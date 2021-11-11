@@ -76,6 +76,11 @@ app.post("/finish", async (req,res) =>{
     }
 })
 
+app.get("/list", async (req, res) => {
+    var result = await AppointmentService.GetAll(true)
+    res.render("list", {result})
+})
+
 app.listen(8080, () => {
   console.log("Rodando");
 });
