@@ -19,6 +19,9 @@
         events: 'getcalendar',
         eventClick: function(info){
             window.location.href = "/agendamento/"+info.event.id
+        },
+        dateClick: function(info){
+            window.location.href = "/agendamento?date="+info.dateStr
         }
     })
     calendar.render()

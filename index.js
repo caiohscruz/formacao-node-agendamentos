@@ -23,7 +23,7 @@ app.get("/", (req, res) => {
 });
 
 app.get("/agendamento", (req, res) => {
-  res.render("create");
+  res.render("create",{date: (req.query.date!=undefined)?req.query.date:""});
 });
 
 app.post("/create", async (req, res) => {
@@ -93,7 +93,7 @@ app.get("/searchresult", async (req, res) => {
     }
 })
 
-var pollTime = 300000
+var pollTime = 3000
 
 setInterval(async ()=>{
     await AppointmentService.SendNotification()
