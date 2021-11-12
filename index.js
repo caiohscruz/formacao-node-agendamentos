@@ -93,6 +93,13 @@ app.get("/searchresult", async (req, res) => {
     }
 })
 
+var pollTime = 300000
+
+setInterval(async ()=>{
+    await AppointmentService.SendNotification()
+}, pollTime)
+
+
 
 app.listen(8080, () => {
   console.log("Rodando");

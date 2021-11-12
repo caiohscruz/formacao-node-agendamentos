@@ -11,9 +11,10 @@ class AppointmentFactory {
 
         return {
             id: appo._id,
-            title: appo.name + ' ' + appo.description,
+            title: `${appo.name} (${appo.description})`,
             start: startDate,
-            end: startDate
+            end: startDate,
+            notified: appo.notified
         }
     }
 }

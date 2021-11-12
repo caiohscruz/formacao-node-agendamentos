@@ -16,7 +16,7 @@
     <div class="card-header">Consulta</div>
     <div class="card-body">
       <h4>Paciente: <%= appo.name %></h4>
-      <h4>CPF: <%= appo.cpf %></h4> 
+      <h4>CPF: <%= appo.cpf %></h4>
       <h4>E-mail: <%= appo.email %></h4>
       <h4>Descrição: <%= appo.description %></h4>
       <h4>
@@ -25,8 +25,8 @@
       </h4>
       <h4>Hora: <%= appo.time %></h4>
       <form action="/finish" method="post">
-          <input type="hidden" name="id" value="<%= appo._id %>">
-          <button>Finalizar consulta</button>
+        <input type="hidden" name="id" value="<%= appo._id %>">
+        <button>Finalizar consulta</button>
       </form>
     </div>
   </div>

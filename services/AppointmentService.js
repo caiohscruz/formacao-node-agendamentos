@@ -14,6 +14,7 @@ class AppointmentService {
       date: obj.date,
       time: obj.time,
       finished: false,
+      notified: false
     });
     try {
       await newAppo.save();
@@ -95,6 +96,9 @@ class AppointmentService {
   }   
   }
 
+  async SendNotification(){
+    var result = await this.GetAll(false)
+  }
 }
 
 module.exports = new AppointmentService();
